@@ -23,12 +23,21 @@ class GameSprite(sprite.Sprite):
         window.blit(self.image,(self.rect.x, self.rect.y))
     
 class Player(GameSprite):
-    def update(self):
+    def update_l(self):
         keys_pressed = key.get_pressed()
-        if keys_pressed[K_a] and self.rect.x > 0:
-            self.rect.x -= self.speed
-        if keys_pressed[K_d] and self.rect.x < 635:
-            self.rect.x += self.speed
+        if keys_pressed[K_w] and self.rect.y > 0:
+            self.rect.y -= self.speed
+        if keys_pressed[K_s] and self.rect.y < 635:
+            self.rect.y += self.speed
+    def update_r(self):
+        keys_pressed = key.get_pressed()
+        if keys_pressed[K_UP] and self.rect.y > 0:
+            self.rect.y -= self.speed
+        if keys_pressed[K_DOWN] and self.rect.y < 635:
+            self.rect.y += self.speed
+
+raketka_l = Player('raketka.png',20,10,5,10,100)
+raketka_r = Player('raketka.png',680,10,5,10,100)
 
 
 game = True
@@ -43,6 +52,10 @@ while game:
         
     if finish != True:
         window.blit(background,(0,0))
+        raketka_l.update_l()
+        raketka_l.reset()
+        raketka_r.update_r()
+        raketka_r.reset()
         
         
 
