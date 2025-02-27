@@ -27,13 +27,13 @@ class Player(GameSprite):
         keys_pressed = key.get_pressed()
         if keys_pressed[K_w] and self.rect.y > 0:
             self.rect.y -= self.speed
-        if keys_pressed[K_s] and self.rect.y < 635:
+        if keys_pressed[K_s] and self.rect.y < 400:
             self.rect.y += self.speed
     def update_r(self):
         keys_pressed = key.get_pressed()
         if keys_pressed[K_UP] and self.rect.y > 0:
             self.rect.y -= self.speed
-        if keys_pressed[K_DOWN] and self.rect.y < 635:
+        if keys_pressed[K_DOWN] and self.rect.y < 400:
             self.rect.y += self.speed
 
 raketka_l = Player('raketka.png',20,10,5,10,100)
