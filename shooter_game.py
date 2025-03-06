@@ -38,6 +38,10 @@ class Player(GameSprite):
 
 raketka_l = Player('raketka.png',20,10,5,10,100)
 raketka_r = Player('raketka.png',680,10,5,10,100)
+ball = GameSprite('ball.png',325,225,5,50,50)
+
+speed_x = 4
+speed_y = 4
 
 
 game = True
@@ -55,7 +59,16 @@ while game:
         raketka_l.update_l()
         raketka_l.reset()
         raketka_r.update_r()
-        raketka_r.reset()
+        raketka_r.reset() #отскок мяча от ракеток
+        ball.rect.x += speed_x
+        ball.rect.y += speed_y
+        if ball.rect.y <= 0:
+            speed_y *= -1
+        if ball.rect.y >= 450:
+            speed_y *= -1
+        if sprite.collide_rect(raketka_l, ball) or sprite.collide_rect(raketka_r, ball):
+            speed_x *= -1
+        ball.reset()
         
         
 
