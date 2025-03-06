@@ -47,8 +47,7 @@ speed_y = 4
 game = True
 finish = False
 font.init()
-font1 = font.SysFont('Arial',30)
-font2 = font.SysFont('Arial',70)
+font1 = font.SysFont('Arial',70)
 while game:  
     for e in event.get():
         if e.type == QUIT:
@@ -68,6 +67,14 @@ while game:
             speed_y *= -1
         if sprite.collide_rect(raketka_l, ball) or sprite.collide_rect(raketka_r, ball):
             speed_x *= -1
+        lose_l = font1.render('PLAYER 1 LOSE',True,(180,0,0))
+        lose_r = font1.render('PLAYER 2 LOSE',True,(180,0,0))
+        if ball.rect.x < 0:
+            finish = True
+            window.blit(lose_l,(200,200))
+        if ball.rect.x > 700:
+            finish = True
+            window.blit(lose_r,(200,200))
         ball.reset()
         
         
